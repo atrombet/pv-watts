@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Row, Container, Col } from 'react-bootstrap';
 import { PVWattsForm, PVWattsTable } from './components';
 import { useFormState, useTableState } from './state';
 import { PV_WATTS_DEFAULT_PARAMS, URLS } from './constants';
@@ -50,16 +49,12 @@ const App: React.FC = () => {
    ****************************/
 
   return (
-    <Container>
-      <Row className="justify-content-md-center">
-        <Col xs={6}>
-          {page === 'form'
-            ? <PVWattsForm form={formState} handleChange={handleChange} onFormSubmit={onPVWattsFormSubmit} />
-            : <PVWattsTable tableData={tableData} backToForm={backToForm} />
-          }
-        </Col>
-      </Row>
-    </Container>
+    <div className="page">
+      {page === 'form'
+        ? <PVWattsForm form={formState} handleChange={handleChange} onFormSubmit={onPVWattsFormSubmit} />
+        : <PVWattsTable tableData={tableData} backToForm={backToForm} />
+      }
+    </div>
   );
 }
 

@@ -115,7 +115,7 @@ export const PVWattsForm: React.FC<PVWattsFormProps> = ({ form, handleChange, on
       </Form.Row>
 
       <hr/>
-      <p><strong>Please enter data for ONE fo the following rows.</strong></p>
+      <p><strong>Please enter data for ONE of the following rows.</strong></p>
 
       <Form.Group controlId="address">
         <Form.Label>Address</Form.Label>

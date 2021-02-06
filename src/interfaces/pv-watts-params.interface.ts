@@ -1,5 +1,4 @@
-export interface PVWattRequest {
-  format: 'json' | 'xml';
+export interface PVWattsParams {
   api_key: string;
   timeframe: 'monthly' | 'hourly';
   system_capacity: string;

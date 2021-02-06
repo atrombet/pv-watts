@@ -2,21 +2,16 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import { Col } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
-import { PVWattRequest } from '../interfaces';
+import { PVWattsParams } from '../interfaces';
 import { FormFields } from '../enums';
 
-interface PVWattFormProps {
-  form: Partial<PVWattRequest>;
+interface PVWattsFormProps {
+  form: Partial<PVWattsParams>;
   handleChange: (event: any) => void;
   onFormSubmit: (event: any) => void;
 }
 
-const PVWattForm: React.FC<PVWattFormProps> = ({ form, handleChange, onFormSubmit }) => {
-
-  const printForm = () => { 
-    console.log(form);
-  };
-
+export const PVWattsForm: React.FC<PVWattsFormProps> = ({ form, handleChange, onFormSubmit }) => {
   return (
     <Form onSubmit={onFormSubmit}>
       <h1>PVWatts API Form</h1>
@@ -32,6 +27,7 @@ const PVWattForm: React.FC<PVWattFormProps> = ({ form, handleChange, onFormSubmi
             step={0.01}
             min={0.05}
             max={500000}
+            required
             placeholder="Enter a value 0.05 to 500,000"
           />
         </Form.Group>
@@ -46,6 +42,7 @@ const PVWattForm: React.FC<PVWattFormProps> = ({ form, handleChange, onFormSubmi
             step={0.01}
             min={-5}
             max={99}
+            required
             placeholder="Enter a value -5 to 99"
           />
         </Form.Group>
@@ -59,6 +56,7 @@ const PVWattForm: React.FC<PVWattFormProps> = ({ form, handleChange, onFormSubmi
             name={FormFields.ModuleType}
             value={form[FormFields.ModuleType]}
             onChange={handleChange}
+            required
           >
             <option value={0}>Standard</option>
             <option value={1}>Premium</option>
@@ -73,6 +71,7 @@ const PVWattForm: React.FC<PVWattFormProps> = ({ form, handleChange, onFormSubmi
             name={FormFields.ArrayType}
             value={form[FormFields.ArrayType]}
             onChange={handleChange}
+            required
           >
             <option value={0}>Fixed - Open Rack</option>
             <option value={1}>Fixed - Roof Mounted</option>
@@ -90,10 +89,11 @@ const PVWattForm: React.FC<PVWattFormProps> = ({ form, handleChange, onFormSubmi
             name={FormFields.Tilt}
             value={form[FormFields.Tilt]}
             onChange={handleChange}
-            type="number" 
-            step={0.01} 
-            min={0} 
-            max={90} 
+            type="number"
+            step={0.01}
+            min={0}
+            max={90}
+            required
             placeholder="Enter a value 0 to 90"
           />
         </Form.Group>
@@ -108,6 +108,7 @@ const PVWattForm: React.FC<PVWattFormProps> = ({ form, handleChange, onFormSubmi
             step={0.01}
             min={0}
             max={359.99}
+            required
             placeholder="Enter a value 0 to 359.99"
           />
         </Form.Group>
@@ -165,11 +166,9 @@ const PVWattForm: React.FC<PVWattFormProps> = ({ form, handleChange, onFormSubmi
         />
       </Form.Group>
 
-      <Button variant="primary" type="submit" onClick={printForm}>
+      <Button variant="primary" type="submit">
         Submit
       </Button>
     </Form>
   );
 };
-
-export default PVWattForm;
